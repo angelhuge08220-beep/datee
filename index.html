@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour toi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(180deg,#fffaf7,#ffecef);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.card{
+background:white;
+width:90%;
+max-width:470px;
+padding:45px;
+border-radius:18px;
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+text-align:center;
+position:relative;
+z-index:2;
+animation:fade .7s;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.small{
+letter-spacing:4px;
+font-size:12px;
+color:#777;
+margin-bottom:10px;
+}
+
+h1{
+font-family:"Cormorant Garamond",serif;
+font-size:45px;
+color:#7d2b3d;
+line-height:1.1;
+margin-bottom:15px;
+}
+
+p{
+color:#666;
+margin-bottom:25px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+position:relative;
+height:55px;
+}
+
+button{
+padding:13px 32px;
+border:none;
+border-radius:10px;
+font-size:17px;
+cursor:pointer;
+transition:.3s;
+}
+
+#yes{
+background:#a84863;
+color:white;
+}
+
+#yes:hover{
+transform:scale(1.08);
+}
+
+#no{
+background:white;
+border:2px solid #a84863;
+position:absolute;
+left:110px;
+}
+
+.choice{
+display:grid;
+gap:15px;
+margin-top:25px;
+}
+
+.choice button{
+background:#f8f3f4;
+border:2px solid #c98ca0;
+color:#7d2b3d;
+}
+
+.choice button:hover{
+background:#a84863;
+color:white;
+}
+
+.hidden{
+display:none;
+}
+
+.heart{
+position:absolute;
+color:#ff7b9b;
+font-size:20px;
+animation:fall linear infinite;
+top:-10%;
+}
+
+@keyframes fall{
+to{
+transform:translateY(120vh);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="page1">
+
+<div class="small">POUR TOI ❤️</div>
+
+<h1>Ça te dit un date avec moi ?</h1>
+
+<p><i>Dire non c'est nul... mais tu peux quand même essayer 😌</i></p>
+
+<div class="buttons">
+
+<button id="no">Non</button>
+
+<button id="yes">Oui</button>
+
+</div>
+
+</div>
+
+<div class="card hidden" id="page2">
+
+<div class="small">PARFAIT ✨</div>
+
+<h1>À quelle heure tu veux aller au cinéma à Charleville le samedi 1 ?</h1>
+
+<div class="choice">
+
+<button onclick="finish()">15h15</button>
+
+<button onclick="finish()">18h30</button>
+
+<button onclick="finish()">22h30</button>
+
+</div>
+
+</div>
+
+<div class="card hidden" id="page3">
+
+<h1>💖 Date confirmée 💖</h1>
+
+<p style="font-size:22px">
+Rendez-vous le samedi 1 au cinéma à Charleville !
+</p>
+
+<h2 style="margin-top:25px;color:#a84863;">
+Bisous ❤️
+</h2>
+
+</div>
+
+<script>
+
+const no=document.getElementById("no");
+
+no.addEventListener("mouseover",()=>{
+
+let x=Math.random()*250-120;
+let y=Math.random()*120-60;
+
+no.style.transform=`translate(${x}px,${y}px)`;
+
+});
+
+document.getElementById("yes").onclick=()=>{
+
+page1.classList.add("hidden");
+page2.classList.remove("hidden");
+
+}
+
+function finish(){
+
+page2.classList.add("hidden");
+page3.classList.remove("hidden");
+
+}
+
+for(let i=0;i<40;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=5+Math.random()*8+"s";
+
+h.style.opacity=Math.random();
+
+h.style.fontSize=12+Math.random()*22+"px";
+
+document.body.appendChild(h);
+
+}
+
+</script>
+
+</body>
+</html>
